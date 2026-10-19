@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favoritos - Rodrigo Baião</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#f4efe8">
+    <link rel="preload" href="assets/ds/fonts/Poppins-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/ds/fonts/Poppins-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8;
+            font-family: var(--font-sans, 'Poppins', sans-serif);
+            background-color: #f4efe8;
             overflow-x: hidden;
         }
         
@@ -31,7 +33,7 @@
             height: 100vh;
             z-index: -1;
             overflow: hidden;
-            background: #f0f2f5;
+            background: #f4efe8;
         }
 
         .glow-bg-image {
@@ -98,7 +100,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(ellipse at center, transparent 40%, rgba(235,238,242,0.7) 100%);
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(244,239,232,0.75) 100%);
             pointer-events: none;
         }
 
@@ -156,9 +158,76 @@
             border: 1px solid rgba(255, 255, 255, 0.5);
             box-shadow: 0 4px 20px -1px rgba(0, 0, 0, 0.05);
         }
+        /* ===== Design System · Rodrigo Baião ===== */
+        @font-face{font-family:'Poppins';font-weight:400;font-style:normal;font-display:swap;src:url('assets/ds/fonts/Poppins-Regular.woff2') format('woff2');}
+        @font-face{font-family:'Poppins';font-weight:500;font-style:normal;font-display:swap;src:url('assets/ds/fonts/Poppins-Medium.woff2') format('woff2');}
+        @font-face{font-family:'Poppins';font-weight:600;font-style:normal;font-display:swap;src:url('assets/ds/fonts/Poppins-SemiBold.woff2') format('woff2');}
+        @font-face{font-family:'Poppins';font-weight:700;font-style:normal;font-display:swap;src:url('assets/ds/fonts/Poppins-Bold.woff2') format('woff2');}
+        @font-face{font-family:'Poppins';font-weight:800;font-style:normal;font-display:swap;src:url('assets/ds/fonts/Poppins-ExtraBold.woff2') format('woff2');}
+        @font-face{font-family:'Merriweather';font-weight:400;font-style:italic;font-display:swap;src:url('assets/ds/fonts/Merriweather-Italic-Regular.woff2') format('woff2');}
+        :root{--font-sans:'Poppins',system-ui,sans-serif; --font-serif:'Merriweather',Georgia,serif;}
+        .emph{font-family:var(--font-serif); font-style:italic; font-weight:400; letter-spacing:-0.01em;}
+        ::selection{background:rgba(166,140,117,.35);}
+        a:focus-visible,button:focus-visible{outline:2px solid #a68c75; outline-offset:3px;}
+
+        /* fundo: creme quente, brilhos dourados e o quadriculado do MZV */
+        .glow-bg-image{opacity:.09; filter:blur(8px) saturate(.6) sepia(.2);}   /* foto bem discreta; para tirar de vez: display:none */
+        .glow-shimmer{display:none;}
+        .glow-orb-1{background:radial-gradient(circle, rgba(217,185,155,0.36) 0%, rgba(217,185,155,0) 70%);}
+        .glow-orb-2{background:radial-gradient(circle, rgba(243,220,195,0.40) 0%, rgba(243,220,195,0) 70%);}
+        .glow-orb-3{background:radial-gradient(circle, rgba(201,193,185,0.28) 0%, rgba(201,193,185,0) 70%);}
+        .glow-grid{position:absolute; inset:0; pointer-events:none; background-size:40px 40px;
+            background-image:linear-gradient(to right, rgba(74,71,68,.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(74,71,68,.06) 1px, transparent 1px);
+            -webkit-mask-image:radial-gradient(ellipse at center,#000 20%,transparent 72%); mask-image:radial-gradient(ellipse at center,#000 20%,transparent 72%);   /* para tirar a grade: display:none */}
+
+        /* vidro com borda em degradê e sombra em camadas */
+        .glass-card{
+            border:1px solid transparent;
+            background:
+                linear-gradient(rgba(251,249,246,.74), rgba(251,249,246,.74)) padding-box,
+                linear-gradient(150deg, rgba(255,255,255,.95), rgba(74,71,68,.08) 40%, rgba(74,71,68,.05) 62%, rgba(166,140,117,.50)) border-box;
+            -webkit-backdrop-filter:blur(14px) saturate(1.2); backdrop-filter:blur(14px) saturate(1.2);
+            box-shadow:0 2px 4px rgba(74,71,68,.08), 0 12px 32px -10px rgba(74,71,68,.18), inset 0 1px 0 rgba(255,255,255,.9);
+        }
+        .glass-header{
+            border:1px solid transparent;
+            background:
+                linear-gradient(rgba(251,249,246,.55), rgba(251,249,246,.55)) padding-box,
+                linear-gradient(150deg, rgba(255,255,255,.95), rgba(74,71,68,.06) 45%, rgba(166,140,117,.45)) border-box;
+            box-shadow:0 2px 4px rgba(74,71,68,.06), 0 18px 40px -14px rgba(74,71,68,.20), inset 0 1px 0 rgba(255,255,255,.9);
+        }
+        button.glass-card:hover, a.glass-card:hover{
+            box-shadow:0 2px 4px rgba(74,71,68,.08), 0 18px 44px -10px rgba(166,140,117,.45), inset 0 1px 0 rgba(255,255,255,.95);
+        }
+
+        /* botões: grafite com filete de luz; no hover esquenta para o bronze */
+        .ver-mais{
+            background:linear-gradient(180deg,#5a5551 0%,#4a4744 55%,#35322f 100%);
+            box-shadow:inset 0 1px 0 rgba(255,255,255,.18), 0 1px 2px rgba(0,0,0,.25), 0 6px 16px -6px rgba(74,71,68,.5);
+            transition:background .25s ease, box-shadow .25s ease;
+        }
+        button:hover .ver-mais{
+            background:linear-gradient(180deg,#7a6450 0%,#5e4b3a 55%,#43362b 100%);
+            box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 1px 2px rgba(0,0,0,.25), 0 8px 22px -6px rgba(166,140,117,.8);
+        }
+        .store-btn{
+            --store:#a68c75; display:flex; align-items:center; justify-content:center; gap:10px; width:100%;
+            padding:13px 16px; border-radius:999px; color:#fbf9f6; font:600 12px/1 var(--font-sans); letter-spacing:.03em; text-decoration:none;
+            background:linear-gradient(180deg,#5a5551 0%,#4a4744 55%,#35322f 100%);
+            box-shadow:inset 0 1px 0 rgba(255,255,255,.18), 0 1px 2px rgba(0,0,0,.25), 0 8px 20px -8px rgba(74,71,68,.55);
+            transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+        }
+        .store-btn::before{content:""; width:9px; height:9px; border-radius:50%; background:var(--store); box-shadow:0 0 0 3px rgba(255,255,255,.14);}
+        .store-btn:hover{transform:translateY(-1px); background:linear-gradient(180deg,#7a6450 0%,#5e4b3a 55%,#43362b 100%); box-shadow:inset 0 1px 0 rgba(255,255,255,.22), 0 10px 26px -8px rgba(166,140,117,.85);}
+        .store-btn--stephan{--store:#34c38f;} .store-btn--ml{--store:#ffe600;} .store-btn--ali{--store:#ff5a1f;} .store-btn--amz{--store:#ff9900;}
+
+        @media (prefers-reduced-motion:reduce){
+            .glow-orb-1,.glow-orb-2,.glow-orb-3,.glow-shimmer{animation:none;}
+            *{transition:none !important;}
+        }
     </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col items-center py-12 px-5 sm:px-6 text-slate-800 relative z-0">
+<body class="antialiased min-h-screen flex flex-col items-center py-12 px-5 sm:px-6 text-[#4a4744] relative z-0">
     
     <!-- Background Animado -->
     <div class="glow-bg">
@@ -166,6 +235,7 @@
         <div class="glow-orb-1"></div>
         <div class="glow-orb-2"></div>
         <div class="glow-orb-3"></div>
+        <div class="glow-grid"></div>
         <div class="glow-vignette"></div>
         <div class="glow-shimmer"></div>
     </div>
@@ -175,21 +245,21 @@
         
         <!-- Cabeçalho -->
         <div class="flex flex-col items-center gap-4 mb-10 p-6 glass-header rounded-3xl">
-            <div class="w-24 h-24 rounded-full flex-shrink-0 relative overflow-hidden bg-white shadow-xl border-4 border-white ring-4 ring-stone-200">
+            <div class="w-24 h-24 rounded-full flex-shrink-0 relative overflow-hidden bg-white shadow-xl border-4 border-white ring-4 ring-[#d6cec5]">
                 <img src="Fotograma 2026-01-08 091004_3.11.1.jpg" alt="Rodrigo Baião" class="w-full h-full object-cover">
             </div>
             <div class="text-center mt-2 px-2 flex flex-col items-center">
-                <h1 class="text-2xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-stone-900 via-stone-600 to-stone-900">
-                    Equipamentos Favoritos
+                <h1 class="text-2xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#3a3633] via-[#7f6752] to-[#3a3633]">
+                    Equipamentos <span class="emph">Favoritos</span>
                 </h1>
-                <p class="text-sm mt-1.5 text-slate-500 font-semibold uppercase tracking-wider">Por Rodrigo Baião</p>
+                <p class="text-sm mt-1.5 text-[#6b645e] font-semibold uppercase tracking-wider">Por Rodrigo Baião</p>
 
                 <!-- Redes Sociais -->
                 <div class="flex justify-center gap-4 mt-4">
-                    <a href="https://www.instagram.com/rodrigobaiaoo/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-slate-600 hover:text-pink-600 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                    <a href="https://www.instagram.com/rodrigobaiaoo/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-[#6b645e] hover:text-[#7f6752] hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" /></svg>
                     </a>
-                    <a href="https://www.youtube.com/rodrigobaiao" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-slate-600 hover:text-red-600 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                    <a href="https://www.youtube.com/rodrigobaiao" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-[#6b645e] hover:text-[#7f6752] hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                     </a>
                 </div>
@@ -198,10 +268,10 @@
 
         <!-- Seção: Microfones -->
         <div class="w-full mb-8 bio-block">
-            <h2 class="text-[12px] font-bold uppercase mb-4 flex items-center justify-center tracking-[0.2em] text-slate-400">
-                <span class="w-8 h-[1px] bg-slate-300 mr-3"></span>
+            <h2 class="text-[12px] font-bold uppercase mb-4 flex items-center justify-center tracking-[0.2em] text-[#7f6752]">
+                <span class="w-8 h-[1px] bg-[#a68c75]/45 mr-3"></span>
                 Microfones
-                <span class="w-8 h-[1px] bg-slate-300 ml-3"></span>
+                <span class="w-8 h-[1px] bg-[#a68c75]/45 ml-3"></span>
             </h2>
             <div class="grid grid-cols-3 gap-3 pb-6 pt-2 w-full">
                 
@@ -211,8 +281,8 @@
                         <img src="produtos/Fifine K688.jpg" alt="Fifine K688" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Fifine K688</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Fifine K688</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
 
@@ -222,8 +292,8 @@
                         <img src="produtos/comica vm40" alt="Comica VM40" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Comica VM40</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Comica VM40</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
 
@@ -233,8 +303,8 @@
                         <img src="produtos/lark a1.webp" alt="Lark A1" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Lark A1</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Lark A1</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
 
@@ -244,8 +314,8 @@
                         <img src="produtos/lark m2.jpg" alt="Lark M2" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Lark M2</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Lark M2</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
 
@@ -255,8 +325,8 @@
                         <img src="produtos/lark m2s.jpg" alt="Lark M2S" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Lark M2S</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Lark M2S</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
 
@@ -266,8 +336,8 @@
                         <img src="produtos/lark m3.jpeg" alt="Lark M3" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Lark M3</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Lark M3</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
 
@@ -276,8 +346,8 @@
                         <img src="produtos/lark max 2.webp" alt="Lark Max 2" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Lark Max 2</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Lark Max 2</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
 
@@ -287,10 +357,10 @@
 
         <!-- Seção: Câmeras -->
         <div class="w-full mb-8 bio-block">
-            <h2 class="text-[12px] font-bold uppercase mb-4 flex items-center justify-center tracking-[0.2em] text-slate-400">
-                <span class="w-8 h-[1px] bg-slate-300 mr-3"></span>
+            <h2 class="text-[12px] font-bold uppercase mb-4 flex items-center justify-center tracking-[0.2em] text-[#7f6752]">
+                <span class="w-8 h-[1px] bg-[#a68c75]/45 mr-3"></span>
                 Câmeras
-                <span class="w-8 h-[1px] bg-slate-300 ml-3"></span>
+                <span class="w-8 h-[1px] bg-[#a68c75]/45 ml-3"></span>
             </h2>
             <div class="grid grid-cols-3 gap-3 pb-6 pt-2 w-full">
                 
@@ -300,8 +370,8 @@
                         <img src="produtos/sony zve10 i.jpeg" alt="Sony ZV-E10 I" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Sony ZV-E10 I</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Sony ZV-E10 I</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
 
@@ -311,8 +381,8 @@
                         <img src="produtos/sony zv e10 II.jpg" alt="Sony ZV-E10 II" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Sony ZV-E10 II</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Sony ZV-E10 II</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
 
@@ -322,8 +392,8 @@
                         <img src="produtos/osmo pocket 3.webp" alt="Osmo Pocket 3" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Osmo Pocket 3</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Osmo Pocket 3</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
 
@@ -333,8 +403,8 @@
                         <img src="produtos/osmo pocket 4.webp" alt="Osmo Pocket 4" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Osmo Pocket 4</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Osmo Pocket 4</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
 
@@ -344,8 +414,8 @@
                         <img src="produtos/insta360 luna ultra" alt="Insta360 Luna Ultra" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Insta360 Luna Ultra</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Insta360 Luna Ultra</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
 
@@ -355,10 +425,10 @@
 
         <!-- Seção: Iluminação -->
         <div class="w-full mb-8 bio-block">
-            <h2 class="text-[12px] font-bold uppercase mb-4 flex items-center justify-center tracking-[0.2em] text-slate-400">
-                <span class="w-8 h-[1px] bg-slate-300 mr-3"></span>
+            <h2 class="text-[12px] font-bold uppercase mb-4 flex items-center justify-center tracking-[0.2em] text-[#7f6752]">
+                <span class="w-8 h-[1px] bg-[#a68c75]/45 mr-3"></span>
                 Iluminação
-                <span class="w-8 h-[1px] bg-slate-300 ml-3"></span>
+                <span class="w-8 h-[1px] bg-[#a68c75]/45 ml-3"></span>
             </h2>
             <div class="grid grid-cols-3 gap-3 pb-6 pt-2 w-full">
                 
@@ -367,8 +437,8 @@
                         <img src="produtos/Sokani X100.webp" alt="Sokani X100" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Sokani X100</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Sokani X100</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Ulanzi AL60', 'produtos/Ulanzi AL60 .jpg', 'Ideal para espaços pequenos, entrega uma luz bem próxima de uma softbox', 'https://meli.la/1VFuF53', 'https://s.click.aliexpress.com/e/_c3v3XzUB', 'https://link.amazon/B048e3p9G')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -376,8 +446,8 @@
                         <img src="produtos/Ulanzi AL60 .jpg" alt="Ulanzi AL60" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Ulanzi AL60</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Ulanzi AL60</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Ulanzi VL-120Bi', 'produtos/Ulanzi VL-120Bi V.webp', 'Outra versão potente e mais em conta, boa para quem está começando', 'https://meli.la/2BD483D', 'https://s.click.aliexpress.com/e/_c4XcjAer', 'https://link.amazon/B0bn9jqaq')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -385,8 +455,8 @@
                         <img src="produtos/Ulanzi VL-120Bi V.webp" alt="Ulanzi VL-120Bi" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Ulanzi VL-120Bi</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Ulanzi VL-120Bi</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Amaran 200x', 'produtos/amaran Halo 200x.jpeg', 'A que uso no meu estúdio, iluminação bem potente, controle pelo app, uma fidelidade de cor muito boa', 'https://meli.la/2K5crDy', 'https://s.click.aliexpress.com/e/_c4MQsFJ9', '')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -394,8 +464,8 @@
                         <img src="produtos/amaran Halo 200x.jpeg" alt="Amaran 200x" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Amaran 200x</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Amaran 200x</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
 
@@ -405,10 +475,10 @@
 
         <!-- Seção: Acessórios -->
         <div class="w-full mb-8 bio-block">
-            <h2 class="text-[12px] font-bold uppercase mb-4 flex items-center justify-center tracking-[0.2em] text-slate-400">
-                <span class="w-8 h-[1px] bg-slate-300 mr-3"></span>
+            <h2 class="text-[12px] font-bold uppercase mb-4 flex items-center justify-center tracking-[0.2em] text-[#7f6752]">
+                <span class="w-8 h-[1px] bg-[#a68c75]/45 mr-3"></span>
                 Acessórios
-                <span class="w-8 h-[1px] bg-slate-300 ml-3"></span>
+                <span class="w-8 h-[1px] bg-[#a68c75]/45 ml-3"></span>
             </h2>
             <div class="grid grid-cols-3 gap-3 pb-6 pt-2 w-full">
                 
@@ -417,8 +487,8 @@
                         <img src="produtos/PGYTECH OneGo Lite 16L 22L Camera Backpack.webp" alt="Mochila PGYTECH" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Mochila PGYTECH</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Mochila PGYTECH</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Cage ZV-E10 II', 'produtos/SmallRig HawkLock Quick Release Cage Kit with Cable Clamp for HDMI Silicone Handle Plate for Arca QD Socket for Sony ZV-E10 II.jpg', 'Uma gaiola de metal para proteger sua câmera e abrir novas possibilidades de prender acessórios', '', 'https://s.click.aliexpress.com/e/_c3xESWwJ', 'https://link.amazon/B04Trzg4I')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -426,8 +496,8 @@
                         <img src="produtos/SmallRig HawkLock Quick Release Cage Kit with Cable Clamp for HDMI Silicone Handle Plate for Arca QD Socket for Sony ZV-E10 II.jpg" alt="Cage ZV-E10 II" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Cage ZV-E10 II</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Cage ZV-E10 II</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Kit de Chaves SmallRig', 'produtos/SmallRig Universal DSLR Camera Rig Folding Tool.jpeg', 'Kit com várias chaves para apertar acessórios na câmera, muito prático para o dia a dia.', '', 'https://s.click.aliexpress.com/e/_c35YcYHH', '')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -435,8 +505,8 @@
                         <img src="produtos/SmallRig Universal DSLR Camera Rig Folding Tool.jpeg" alt="Kit de Chaves SmallRig" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Kit de Chaves SmallRig</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Kit de Chaves SmallRig</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Leitor Freewell', 'produtos/Freewell Portable Duo Reader Ultimate SD TF and Micro SD Card Reader & Holder for Professional Photographers and Videographers.jpeg', 'Além de ler o seu cartão de memória, você ainda armazena eles de forma segura e leva com você', '', 'https://s.click.aliexpress.com/e/_c3JTPqhN', 'https://link.amazon/B0bxPxj1N')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -444,8 +514,8 @@
                         <img src="produtos/Freewell Portable Duo Reader Ultimate SD TF and Micro SD Card Reader & Holder for Professional Photographers and Videographers.jpeg" alt="Leitor Freewell" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Leitor Freewell</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Leitor Freewell</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Leitor UGREEN', 'produtos/UGREEN Card Reader SD4.0 312MB:s USB-C to SD MicroSD.jpeg', 'Leitor mais simples para ler no celular ou computador', '', 'https://s.click.aliexpress.com/e/_c3eKIKPp', 'https://link.amazon/B0iqhnEcz')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -453,8 +523,8 @@
                         <img src="produtos/UGREEN Card Reader SD4.0 312MB:s USB-C to SD MicroSD.jpeg" alt="Leitor UGREEN" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Leitor UGREEN</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Leitor UGREEN</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Ulanzi CU01', 'produtos/Ulanzi CU01.jpeg', 'Outra versão de leitor mais simples para carregar com você, em formato de pen drive', 'https://meli.la/2Nuz6pR', 'https://s.click.aliexpress.com/e/_c4s00nAF', '')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -462,8 +532,8 @@
                         <img src="produtos/Ulanzi CU01.jpeg" alt="Ulanzi CU01" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Ulanzi CU01</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Ulanzi CU01</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Falcam F38', 'produtos/Ulanzi FALCAM F38 Universa.jpeg', 'Engate rápido que uso para não perder tempo tirando a câmera do tripé', '', 'https://s.click.aliexpress.com/e/_c3kHfbDt', '')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -471,8 +541,8 @@
                         <img src="produtos/Ulanzi FALCAM F38 Universa.jpeg" alt="Falcam F38" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Falcam F38</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Falcam F38</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Bateria Viltrox ZV-E10 Mark I', 'produtos/Viltrox FZ100 FW50.jpg', 'Bateria mais barata para a ZV-E10 mark 1 e com entrada USBc para carregar direto nela', '', 'https://s.click.aliexpress.com/e/_c4kQV8wJ', '')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -480,8 +550,8 @@
                         <img src="produtos/Viltrox FZ100 FW50.jpg" alt="Bateria Viltrox ZV-E10 Mark I" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Bateria Viltrox ZV-E10 Mark I</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Bateria Viltrox ZV-E10 Mark I</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Braço SmallRig', 'produtos/braco small rig.png', 'Braço articulado para prender acessórios ou até mesmo a câmera em locais diferentes que um tripé não dá', '', 'https://s.click.aliexpress.com/e/_c333FYy7', '')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -489,8 +559,8 @@
                         <img src="produtos/braco small rig.png" alt="Braço SmallRig" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Braço SmallRig</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Braço SmallRig</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 
@@ -499,10 +569,10 @@
 
         <!-- Seção: Tripés -->
         <div class="w-full mb-8 bio-block">
-            <h2 class="text-[12px] font-bold uppercase mb-4 flex items-center justify-center tracking-[0.2em] text-slate-400">
-                <span class="w-8 h-[1px] bg-slate-300 mr-3"></span>
+            <h2 class="text-[12px] font-bold uppercase mb-4 flex items-center justify-center tracking-[0.2em] text-[#7f6752]">
+                <span class="w-8 h-[1px] bg-[#a68c75]/45 mr-3"></span>
                 Tripés
-                <span class="w-8 h-[1px] bg-slate-300 ml-3"></span>
+                <span class="w-8 h-[1px] bg-[#a68c75]/45 ml-3"></span>
             </h2>
             <div class="grid grid-cols-3 gap-3 pb-6 pt-2 w-full">
                 
@@ -511,8 +581,8 @@
                         <img src="produtos/tripe Ulanzi OMBRA VIDEO II.jpeg" alt="Ulanzi OMBRA VIDEO II" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Ulanzi OMBRA VIDEO II</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Ulanzi OMBRA VIDEO II</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Cobra 2 (Leve)', 'produtos/tripe cobra 2.jpg', 'Pequeno e sem ocupar espaço para iluminação e itens leves', '', 'https://s.click.aliexpress.com/e/_c36r3r0r', '')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -520,8 +590,8 @@
                         <img src="produtos/tripe cobra 2.jpg" alt="Cobra 2 (Leve)" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Cobra 2 (Leve)</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Cobra 2 (Leve)</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Cobra 2 (Pesado)', 'produtos/tripe cobra 2.jpg', 'Versão maior que ocupa menos espaço que um tripé Para itens mais pesados', '', 'https://s.click.aliexpress.com/e/_c3XSmUXv', '')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -529,8 +599,8 @@
                         <img src="produtos/tripe cobra 2.jpg" alt="Cobra 2 (Pesado)" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Cobra 2 (Pesado)</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Cobra 2 (Pesado)</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Tripé Freewell', 'produtos/tripe frewell.avif', 'A minha escolha de anos para andar comigo, um tripé super resistente de fibra de carbono e super leve', '', 'https://s.click.aliexpress.com/e/_c3g6WbGJ', '')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -538,8 +608,8 @@
                         <img src="produtos/tripe frewell.avif" alt="Tripé Freewell" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Tripé Freewell</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Tripé Freewell</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Tripé Iluminação', 'produtos/tripe ilimunacao.png', 'Versão mais em conta de tripé para iluminação', '', '', 'https://link.amazon/B07eeiTLe')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -547,8 +617,8 @@
                         <img src="produtos/tripe ilimunacao.png" alt="Tripé Iluminação" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Tripé Iluminação</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Tripé Iluminação</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 
@@ -557,10 +627,10 @@
 
         <!-- Seção: Setup -->
         <div class="w-full mb-8 bio-block">
-            <h2 class="text-[12px] font-bold uppercase mb-4 flex items-center justify-center tracking-[0.2em] text-slate-400">
-                <span class="w-8 h-[1px] bg-slate-300 mr-3"></span>
+            <h2 class="text-[12px] font-bold uppercase mb-4 flex items-center justify-center tracking-[0.2em] text-[#7f6752]">
+                <span class="w-8 h-[1px] bg-[#a68c75]/45 mr-3"></span>
                 Setup
-                <span class="w-8 h-[1px] bg-slate-300 ml-3"></span>
+                <span class="w-8 h-[1px] bg-[#a68c75]/45 ml-3"></span>
             </h2>
             <div class="grid grid-cols-3 gap-3 pb-6 pt-2 w-full">
                 
@@ -569,8 +639,8 @@
                         <img src="produtos/s26 ultra.webp" alt="Meu celular" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Meu celular</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Meu celular</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Meu notebook', 'produtos/macbook air m5.webp', 'Macbook Air M5 com 16gb de ram, super leve e poderoso para minhas edições', 'https://meli.la/1k2Q9Yx', '', '')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -578,8 +648,8 @@
                         <img src="produtos/macbook air m5.webp" alt="Meu notebook" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Meu notebook</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Meu notebook</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Dock Mac Mini', 'produtos/dock mac mini.webp', 'Ideal para o Mac Mini que uso, dessa forma tenho mais entradas e possibilidades, além de leitor de cartão SD e dá pra usar um SSD NVMe direto nele', 'https://meli.la/1TdJeAK', 'https://s.click.aliexpress.com/e/_c3nXp6F1', 'https://link.amazon/B037LQCMA')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -587,8 +657,8 @@
                         <img src="produtos/dock mac mini.webp" alt="Dock Mac Mini" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Dock Mac Mini</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Dock Mac Mini</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Meu mouse favorito', 'produtos/mouse mx master 4.webp', 'Logitech MX master 4 tem toda a ergonomia, praticidade, botões e personalizações para deixar seu trabalho mais ágil', 'https://meli.la/11dXbAx', '', '')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -596,8 +666,8 @@
                         <img src="produtos/mouse mx master 4.webp" alt="Meu mouse favorito" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Meu mouse favorito</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Meu mouse favorito</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Meu teclado favorito', 'produtos/teclado logitech mx mechanical.webp', 'Teclado mecânico super macio de digitar, com uma bateria muito boa e pequeno', 'https://meli.la/1GWnQ9W', '', 'https://link.amazon/B0dFY2xd2')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -605,8 +675,8 @@
                         <img src="produtos/teclado logitech mx mechanical.webp" alt="Meu teclado favorito" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Meu teclado favorito</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Meu teclado favorito</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Ulanzi D200x', 'produtos/Ulanzi D200x.webp', 'Um controlador de teclas personalizáveis para deixar seu trabalho mais ágil e prático no dia a dia', 'https://meli.la/1NeXgaL', 'https://s.click.aliexpress.com/e/_c4cyZVZ1', '')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -614,8 +684,8 @@
                         <img src="produtos/Ulanzi D200x.webp" alt="Ulanzi D200x" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Ulanzi D200x</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Ulanzi D200x</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Hollyland Lyra', 'produtos/hollyland lyra.webp', 'Uma webcam 4K com qualidade de imagem e audio integrada muito boa, se conecta diretamente com o Lark A1 também', 'https://meli.la/2apn31M', '', 'https://link.amazon/B0hW7B9k3')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -623,8 +693,8 @@
                         <img src="produtos/hollyland lyra.webp" alt="Hollyland Lyra" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Hollyland Lyra</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Hollyland Lyra</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Hollyland Venus Liv', 'produtos/webcam hollyland venus liv.webp', 'A melhor webcam que já usei, controle total das configurações, imagem em 4K e um desfoque bem legal', 'https://meli.la/18UAPPN', '', 'https://link.amazon/B0eq9UXbg')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -632,8 +702,8 @@
                         <img src="produtos/webcam hollyland venus liv.webp" alt="Hollyland Venus Liv" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Hollyland Venus Liv</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Hollyland Venus Liv</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
                 <button onclick="openModal('Minha impressora 3D', 'produtos/impressora 3d.webp', 'Modelo de entrada da BambuLab A1 para você melhorar sua vida e iniciar no mundo da impressão 3D', 'https://meli.la/1tMf9jk', '', 'https://link.amazon/B0eEgquxI', 'https://lojastephan.com.br/produtos/impressora-3d-bambu-lab-a1-combo-93jk5/')" class="text-left flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-card overflow-hidden rounded-xl w-full">
@@ -641,46 +711,46 @@
                         <img src="produtos/impressora 3d.webp" alt="Minha impressora 3D" class="w-full h-full object-contain mix-blend-multiply">
                     </div>
                     <div class="flex flex-col flex-1 justify-between p-3 gap-3">
-                        <h3 class="text-[11px] font-extrabold leading-tight text-center text-slate-800">Minha impressora 3D</h3>
-                        <div class="bg-gradient-to-r from-stone-900 to-stone-700 text-white text-[10px] font-bold px-2 py-2 rounded-full text-center tracking-wider w-full shadow-md transition-all">VER MAIS</div>
+                        <h3 class="text-[11px] font-semibold leading-tight text-center text-[#4a4744]">Minha impressora 3D</h3>
+                        <div class="ver-mais text-white text-[10px] font-semibold px-2 py-2 rounded-full text-center tracking-wider w-full transition-all">VER MAIS</div>
                     </div>
                 </button>
             </div>
         </div>
         <!-- Promoções -->
         <div class="w-full mb-8 bio-block">
-            <h2 class="text-[12px] font-bold uppercase mb-4 flex items-center justify-center tracking-[0.2em] text-slate-400">
-                <span class="w-8 h-[1px] bg-slate-300 mr-3"></span>
+            <h2 class="text-[12px] font-bold uppercase mb-4 flex items-center justify-center tracking-[0.2em] text-[#7f6752]">
+                <span class="w-8 h-[1px] bg-[#a68c75]/45 mr-3"></span>
                 Ofertas & Cupons
-                <span class="w-8 h-[1px] bg-slate-300 ml-3"></span>
+                <span class="w-8 h-[1px] bg-[#a68c75]/45 ml-3"></span>
             </h2>
             <div class="flex flex-col gap-3">
                 <!-- WhatsApp -->
-                <a href="https://whatsapp.com/channel/0029VbD3jaiG8l5NG7pb1b3c" target="_blank" rel="noopener noreferrer" class="w-full glass-card hover:-translate-y-1 hover:shadow-xl transition-all duration-300 rounded-2xl p-4 flex items-center justify-between group bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20">
+                <a href="https://whatsapp.com/channel/0029VbD3jaiG8l5NG7pb1b3c" target="_blank" rel="noopener noreferrer" class="w-full glass-card hover:-translate-y-1 hover:shadow-xl transition-all duration-300 rounded-2xl p-4 flex items-center justify-between group border border-transparent">
                     <div class="flex items-center gap-4">
                         <div class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-md">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                         </div>
                         <div class="flex flex-col text-left">
-                            <span class="font-extrabold text-sm text-slate-800">Promoções no WhatsApp</span>
-                            <span class="text-[11px] text-slate-500 font-medium leading-tight">Ofertas e cupons diários imperdíveis!</span>
+                            <span class="font-extrabold text-sm text-[#4a4744]">Promoções no WhatsApp</span>
+                            <span class="text-[11px] text-[#6b645e] font-medium leading-tight">Ofertas e cupons diários imperdíveis!</span>
                         </div>
                     </div>
-                    <svg class="w-5 h-5 text-emerald-500 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <svg class="w-5 h-5 text-[#7f6752] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </a>
                 
                 <!-- Telegram -->
-                <a href="https://t.me/rodrigobaiaoo" target="_blank" rel="noopener noreferrer" class="w-full glass-card hover:-translate-y-1 hover:shadow-xl transition-all duration-300 rounded-2xl p-4 flex items-center justify-between group bg-gradient-to-r from-sky-500/10 to-blue-500/10 border border-sky-500/20">
+                <a href="https://t.me/rodrigobaiaoo" target="_blank" rel="noopener noreferrer" class="w-full glass-card hover:-translate-y-1 hover:shadow-xl transition-all duration-300 rounded-2xl p-4 flex items-center justify-between group border border-transparent">
                     <div class="flex items-center gap-4">
                         <div class="w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center shadow-md">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12s5.373 12 12 12zM5.213 11.644c4.498-1.956 7.498-3.245 8.999-3.868 4.288-1.782 5.179-2.091 5.757-2.102.127-.002.411.029.596.179.155.126.199.297.218.423.018.125.04.394.022.622-.206 2.34-1.101 7.426-1.564 9.77-.196.993-.561 1.326-.913 1.359-.769.073-1.353-.505-2.104-.993-1.177-.765-1.841-1.238-2.983-1.992-1.306-.863-.46-1.338.291-2.118.196-.204 3.606-3.3 3.672-3.58.008-.035.016-.165-.059-.228-.075-.064-.188-.04-.269-.022-.115.025-1.942 1.23-5.485 3.621-.518.358-1.029.532-1.488.522-.505-.011-1.477-.285-2.198-.519-1.042-.338-1.868-.517-1.794-1.092.038-.3.447-.604 1.229-.914z"/></svg>
                         </div>
                         <div class="flex flex-col text-left">
-                            <span class="font-extrabold text-sm text-slate-800">Canal no Telegram</span>
-                            <span class="text-[11px] text-slate-500 font-medium leading-tight">Descontos exclusivos todos os dias!</span>
+                            <span class="font-extrabold text-sm text-[#4a4744]">Canal no Telegram</span>
+                            <span class="text-[11px] text-[#6b645e] font-medium leading-tight">Descontos exclusivos todos os dias!</span>
                         </div>
                     </div>
-                    <svg class="w-5 h-5 text-sky-500 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <svg class="w-5 h-5 text-[#7f6752] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </a>
             </div>
         </div>
@@ -689,12 +759,13 @@
         <!-- Rodapé -->
         <div class="mt-8 mb-12 px-6 text-center flex flex-col gap-4">
             <div class="glass-card p-4 rounded-2xl">
-                <p class="text-[11px] text-slate-500 font-medium leading-relaxed">
+                <p class="text-[11px] text-[#6b645e] font-medium leading-relaxed">
                     <span class="text-xl mb-1 block">🤝</span>
                     Os links desta página são de afiliados. Ao comprar por eles, você não paga nada a mais e ajuda a apoiar o canal!
                 </p>
             </div>
-            <div class="text-[10px] text-slate-400 font-sans opacity-70 tracking-[0.3em] uppercase mt-2">
+            <img src="assets/ds/logo-horizontal-grafite.png" alt="Rodrigo Baião" width="90" height="24" class="mx-auto mt-4" style="height:24px;width:auto">
+            <div class="text-[10px] text-[#8d867f] font-sans opacity-70 tracking-[0.3em] uppercase mt-2">
                 Rodrigo Baião © 2026
             </div>
         </div>
@@ -704,48 +775,48 @@
     <!-- Modal de Produto -->
     <div id="product-modal" class="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4 sm:p-0 opacity-0 pointer-events-none transition-opacity duration-300">
         <!-- Overlay escuro/vidro -->
-        <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="absolute inset-0 bg-[#141211]/50 backdrop-blur-sm" onclick="closeModal()"></div>
         
         <!-- Conteúdo do Modal -->
-        <div id="modal-content" class="relative bg-white/80 backdrop-blur-xl border border-white/80 rounded-3xl shadow-2xl w-full max-w-sm p-6 transform translate-y-full sm:translate-y-8 transition-transform duration-300">
+        <div id="modal-content" class="relative bg-[#fbf9f6]/85 backdrop-blur-xl border border-white/80 rounded-3xl shadow-2xl w-full max-w-sm p-6 transform translate-y-full sm:translate-y-8 transition-transform duration-300">
             <!-- Botão Fechar -->
-            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-white/50 hover:bg-white rounded-full text-slate-500 hover:text-slate-800 transition-colors">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-white/50 hover:bg-white rounded-full text-[#6b645e] hover:text-[#4a4744] transition-colors">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
             
             <div class="flex flex-col items-center mt-2">
                 <!-- Imagem -->
-                <div class="w-32 h-32 mb-4 bg-white rounded-2xl p-2 shadow-sm border border-slate-100">
+                <div class="w-32 h-32 mb-4 bg-white rounded-2xl p-2 shadow-sm border border-[#ebe4da]">
                     <img id="modal-img" src="produtos/Fifine K688.jpg" alt="Produto" class="w-full h-full object-contain mix-blend-multiply">
                 </div>
                 
                 <!-- Título -->
-                <h3 id="modal-title" class="text-xl font-extrabold text-slate-800 mb-2">Fifine K688</h3>
+                <h3 id="modal-title" class="text-xl font-extrabold text-[#4a4744] mb-2">Fifine K688</h3>
                 
                 <!-- Descrição -->
-                <p id="modal-desc" class="text-[13px] text-slate-500 text-center mb-6 leading-relaxed">
+                <p id="modal-desc" class="text-[13px] text-[#6b645e] text-center mb-6 leading-relaxed">
                     Um excelente microfone dinâmico, perfeito para podcasts, streams e gravações vocais, com rejeição de ruído incrível e áudio cristalino.
                 </p>
                 
                 <!-- Botões de Loja -->
                 <div class="flex flex-col w-full gap-3">
                     <!-- Loja Stephan -->
-                    <a id="modal-link-stephan" href="#" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white text-xs font-bold py-3 px-4 rounded-xl shadow-md hover:shadow-lg transition-all" style="display: none;">
+                    <a id="modal-link-stephan" href="#" target="_blank" rel="noopener noreferrer" class="store-btn store-btn--stephan" style="display: none;">
                         Loja Stephan
                     </a>
 
                     <!-- Mercado Livre -->
-                    <a id="modal-link-ml" href="#" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center bg-[#FFE600] hover:bg-[#F2DA00] text-slate-800 text-xs font-bold py-3 px-4 rounded-xl shadow-md hover:shadow-lg transition-all">
+                    <a id="modal-link-ml" href="#" target="_blank" rel="noopener noreferrer" class="store-btn store-btn--ml">
                         Mercado Livre
                     </a>
                     
                     <!-- AliExpress -->
-                    <a id="modal-link-ali" href="#" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center bg-gradient-to-r from-[#FF4500] to-[#FF6B00] hover:from-[#E63E00] hover:to-[#E66000] text-white text-xs font-bold py-3 px-4 rounded-xl shadow-md hover:shadow-lg transition-all">
+                    <a id="modal-link-ali" href="#" target="_blank" rel="noopener noreferrer" class="store-btn store-btn--ali">
                         AliExpress
                     </a>
 
                     <!-- Amazon -->
-                    <a id="modal-link-amz" href="#" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white text-xs font-bold py-3 px-4 rounded-xl shadow-md hover:shadow-lg transition-all">
+                    <a id="modal-link-amz" href="#" target="_blank" rel="noopener noreferrer" class="store-btn store-btn--amz">
                         Amazon
                     </a>
                 </div>
